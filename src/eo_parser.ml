@@ -8,7 +8,7 @@ let write_entry json pres =
         "**["; pres;
         "](https://en.wikipedia.org/wiki/President_of_the_United_States)** ";
         "signed an executive order entitled _"; title; "_ / **[source](";
-        pdflink; ")"] in
+        pdflink; ")**"] in
     let fname = String.concat "" [date; ".md"] in
     let oc = open_out fname in
     Printf.fprintf oc "%s" content;
