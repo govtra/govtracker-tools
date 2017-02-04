@@ -4,10 +4,12 @@ let write_entry json pres =
     let title = json |> member "title" |> to_string in
     let date = json |> member "signing_date" |> to_string in
     let pdflink = json |> member "pdf_url" |> to_string in
+    let pfname = String.split_on_char ' ' pres |> List.hd in
+    let plname = String.split_on_char ' ' pres |> List.tl |> List.hd in
     let content = String.concat "" [
         "**["; pres;
-        "](https://en.wikipedia.org/wiki/President_of_the_United_States)** ";
-        "signed an executive order entitled _"; title; "_ / **[source](";
+        "](https://en.wikipedia.org/wiki/"; pfname; "_"; plname; ")** ";
+        "signs an executive order entitled _"; title; "_ / **[source](";
         pdflink; ")**"] in
     let fname = String.concat "" [date; ".md"] in
     let oc = open_out fname in
